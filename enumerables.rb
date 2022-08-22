@@ -13,12 +13,17 @@ end
 # with the names of each spicy food
 def get_names(spicy_foods)
   # your code here
+  spicy_names = spicy_foods.map{|names| names[:name]}
+  return spicy_names
 end
 
 # given an array of spicy foods, **return an array of hashes** 
 # where the heat level of the food is greater than 5
 def spiciest_foods(spicy_foods)
+  
   # your code here
+  level =spicy_foods.filter{|heat| heat[:heat_level] >= 5}
+  return level
 end
 
 # given an array of spicy foods, **output to the terminal**
@@ -28,18 +33,27 @@ end
 # "hello" * 3 == "hellohellohello"
 def print_spicy_foods(spicy_foods)
   # your code here
+  return spicy_foods.each {|food| puts "#{food[:name]} (#{food[:cuisine]}) | Heat Level: #{'🌶' * food[:heat_level]}"}
 end
 
 # given an array of spicy foods and a string representing a cuisine, **return a single hash**  
 # for the spicy food whose cuisine matches the cuisine being passed to the method
 def get_spicy_food_by_cuisine(spicy_foods, cuisine)
   # your code here
+  selected = spicy_foods.each{|match| puts 
+  if match[:cuisine] == cuisine
+  return match
+  end
+}
 end
 
 # Given an array of spicy foods, **return an array of hashes** 
 # sorted by heat level from lowest to highest
 def sort_by_heat(spicy_foods)
   # your code here
+  sorted = spicy_foods.sort {|type1, type2|
+  type1[:heat_level] <=> type2[:heat_level]}
+  return sorted
 end
 
 # given an array of spicy foods, output to the terminal ONLY 
@@ -48,10 +62,15 @@ end
 # HINT: Try to use methods you've already written to solve this!
 def print_spiciest_foods(spicy_foods)
   # your code here
+
+  level =spicy_foods.filter{|heat| heat[:heat_level] >= 5}
+  return level.each{|hl| puts "#{hl[:name]} (#{hl[:cuisine]}) | Heat Level: #{'🌶' * hl[:heat_level]}" }
 end
 
 # given an array of spicy foods, return an integer representing 
 # the average heat level of all the spicy foods in the array
 def average_heat_level(spicy_foods)
   # your code here
+  total = spicy_foods.sum{|f| f[:heat_level] }
+  return total/spicy_foods.size
 end
